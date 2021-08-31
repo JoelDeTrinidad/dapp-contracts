@@ -1,4 +1,4 @@
-const hre = require("hardhat");
+import hre from "hardhat";
 
 async function main() {
   const [deployer] = await hre.ethers.getSigners();
@@ -15,7 +15,7 @@ async function main() {
   const token = await Token.deploy();
 
   const JuegaCoinToken = await hre.ethers.getContractFactory("JuegaCoinToken");
-  const juegacoinToken = await JuegaCoinToken.deploy("Juega Coin", "JuegaCoin");
+  const juegacoinToken = await JuegaCoinToken.deploy(1000000, "Juega Coin", "JuegaCoin");
 
   await greeter.deployed();
   await token.deployed();

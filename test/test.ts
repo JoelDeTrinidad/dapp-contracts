@@ -1,6 +1,12 @@
-const { expect } = require("chai");
+import { expect } from "chai";
+import { ethers } from "hardhat";
+import { Signer } from "ethers";
 
 describe("Greeter", function () {
+  let accounts: Signer[];
+  beforeEach(async function () {
+    accounts = await ethers.getSigners();
+  });
   it("Should return the new greeting once it's changed", async function () {
     const Greeter = await ethers.getContractFactory("Greeter");
     const greeter = await Greeter.deploy("Hello, world!");
