@@ -2,6 +2,7 @@ import { task } from "hardhat/config";
 import "@nomiclabs/hardhat-waffle";
 import "dotenv/config";
 import "process";
+import "hardhat-contract-sizer"
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
@@ -20,6 +21,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 
 module.exports = {
+  solidity: "0.8.4",
   defaultNetwork: "hardhat",
   paths: {
     artifacts: './src/artifacts',
@@ -31,5 +33,9 @@ module.exports = {
       accounts: [process.env.HARDHAT_PRIVATE_KEY]
     }
   },
-  solidity: "0.8.4",
+  contractSizer: {
+    alphaSort: true,
+    runOnCompile: true,
+    disambiguatePaths: false,
+  },
 };
