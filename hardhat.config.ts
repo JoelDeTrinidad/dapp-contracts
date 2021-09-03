@@ -2,7 +2,8 @@ import { task } from "hardhat/config";
 import "@nomiclabs/hardhat-waffle";
 import "dotenv/config";
 import "process";
-import "hardhat-contract-sizer"
+import "hardhat-contract-sizer";
+import "hardhat-gas-reporter";
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
@@ -32,6 +33,11 @@ module.exports = {
       url: `https://ropsten.infura.io/v3/${process.env.HARDHAT_ID_RESPOSTEN}`,
       accounts: [process.env.HARDHAT_PRIVATE_KEY]
     }
+  },
+  gasReporter: {
+    currency: 'USD',
+    gasPrice: 97,
+    CoinMarketCap: process.env.HARDHAT_COIN_MARKET_CAP
   },
   contractSizer: {
     alphaSort: true,
